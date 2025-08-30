@@ -40,6 +40,8 @@
 body {
   background-color: rgb(var(--background));
   color: rgb(var(--foreground));
+   scroll-behavior: smooth;
+   overflow-x: hidden;
 }
 
 @theme inline {
@@ -122,5 +124,10 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+}
+html {
+  scroll-behavior: smooth;
+   overflow-x: hidden;
+  
 }
 

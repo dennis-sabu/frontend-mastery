@@ -3,14 +3,35 @@ import { FaInstagram, FaGithub } from "react-icons/fa";
 import Link from 'next/link';
 import { useState } from 'react';
 import {HiMenu, HiX} from 'react-icons/hi'
+import {motion} from 'framer-motion';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div>
-      <nav className='flex justify-between items-center px-6 py-4 max-w-full overflow-hidden'>
-        <div className='text-lg font-bold '>DEN</div>
-        <div className='md:flex hidden items-center space-x-4'>
+      <nav className={`flex justify-between items-center px-6 py-4 max-w-full overflow-hidden ${isOpen ? 'blur-sm' : ''}`}>
+        <motion.div
+        initial={{ opacity:-1 , x: 1 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{
+          type: "spring",
+          stiffness: 100,
+          duration: 1.8,
+          delay: 0.3,
+          damping: 25
+        }}
+        className='text-lg font-bold '>DEN</motion.div>
+        <motion.div
+          initial={{ opacity: -100, x: 1 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{
+            type: "spring",
+            stiffness: 100,
+            duration: 1.8,
+            delay: 0.3,
+          damping: 25
+         }}
+        className='md:flex hidden items-center space-x-4'>
           <Link href="https://instagram.com" target="_blank" className="hover:text-pink-500 text-4xl">
             <FaInstagram />
           </Link>
@@ -23,11 +44,11 @@ const Header = () => {
           >
             Login
           </Link>
-        </div>
+        </motion.div>
 
         <div className='md:hidden'>
           <button 
-            className='text-2xl text-gray-700 hover:text-gray-900 transition-colors backdrop-blur-3xl'
+            className='text-2xl text-gray-700 hover:text-gray-900 transition-colors md:backdrop-blur-3xl'
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >
@@ -38,7 +59,26 @@ const Header = () => {
 
       {/* Mobile Dropdown Menu */}
       {isOpen && (
-        <div className="absolute top-14 left-3 right-3 bg-white shadow-lg rounded-xl border-2 md:hidden z-100 backdrop-blur-3xl ">
+        <motion.div
+            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+  animate={{ opacity: 1, scale: 1, y: 0 }}
+  exit={{
+    opacity: 0,
+    scale: 0.95,
+    y: 20,
+    transition: {
+      duration: 0.5,
+      ease: "easeInOut"
+    }
+  }}
+  transition={{
+    type: "spring",
+    stiffness: 60,
+    damping: 18,
+    duration: 0.6
+  }}
+        className="absolute top-14 left-3 right-3 bg-white shadow-lg rounded-xl border-2 md:hidden z-100 backdrop-blur-3xl ">
+          <div className="flex flex-col items-center py-4 space-y-4"></div>
           <div className="flex flex-col items-center py-4 space-y-4">
             <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 hover:text-pink-500 transition-colors">
               <FaInstagram size={20} />
@@ -56,13 +96,12 @@ const Header = () => {
               Login
             </a>
           </div>
-        </div>
+        </motion.div>
       )}
 
-      {/* <div className="h-screen bg-gradient-to-b from-pink-300 to-white absolute top-20 left-4 right-4 bg-white shadow-lg rounded-xl border  z-50">
+      
 
-
-      </div> */}
+      
     </div>
   )
 }
