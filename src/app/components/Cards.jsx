@@ -3,7 +3,7 @@ import {motion }from 'framer-motion'
 
 const HeadList = () => {
   return (
-    <div className="flex flex-col gap-3 p-4">
+    <div className="flex flex-col gap-3 p-4 ">
 
        <motion.div
        initial={{ opacity: 0, x: -100 }}

@@ -6,6 +6,7 @@ import { useState } from "react";
 import Preloader from "./components/Preloader";
 
 
+
  
 const page = () => {
   const [loading, setLoading] = useState(true);
@@ -18,6 +19,7 @@ const page = () => {
           <div><Cards /></div>
         </div>
       )}
+     
     </>
   )
 }

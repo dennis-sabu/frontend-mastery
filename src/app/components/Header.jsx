@@ -9,7 +9,7 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div>
-      <nav className={`flex justify-between items-center px-6 py-4 max-w-full overflow-hidden ${isOpen ? 'blur-sm' : ''}`}>
+      <nav className={`flex justify-between items-center px-6 py-4 max-w-full overflow-hidden `}>
         <motion.div
         initial={{ opacity:-1 , x: 1 }}
         animate={{ opacity: 1, x: 0 }}
@@ -77,7 +77,7 @@ const Header = () => {
     damping: 18,
     duration: 0.6
   }}
-        className="absolute top-14 left-3 right-3 bg-white shadow-lg rounded-xl border-2 md:hidden z-100 backdrop-blur-3xl ">
+        className="absolute top-14 left-3 right-3 bg-white shadow-lg rounded-xl border-2 md:hidden z-100  ">
           <div className="flex flex-col items-center py-4 space-y-4"></div>
           <div className="flex flex-col items-center py-4 space-y-4">
             <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 hover:text-pink-500 transition-colors">
